@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سکوراد - اعلام نتایج</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background-color: #f7f7f7;
+      direction: rtl;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: white;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      width: 80%;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 30px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+    }
+    .result {
+      text-align: right;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+    img {
+      width: 100px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="login-box">
+    <h2>سامانه سکوراد</h2>
+    <p>لطفاً اطلاعات خود را وارد کنید:</p>
+    <input type="text" id="code" placeholder="کد ملی">
+    <input type="password" id="password" placeholder="رمز ورود">
+    <button onclick="login()">ورود</button>
+    <p class="error" id="error-msg"></p>
+  </div>
+
+  <div class="container" id="dashboard" style="display:none">
+    <h3>امیرعلی عزیز، خوش آمدید</h3>
+    <button onclick="showResult()">اعلام نتایج</button>
+  </div>
+
+  <div class="container" id="result" style="display:none">
+    <h3>کارنامه آزمون</h3>
+    <img src="https://i.imgur.com/9dXU6Tf.jpg" alt="عکس کاربر">
+    <p>نام: امیرعلی رمضانی</p>
+    <p>سال تولد: ۱۳۸۶ - جنسیت: مرد</p>
+    <table>
+      <tr><th>عنوان درس</th><th>نمره خام</th></tr>
+      <tr><td>زیست‌شناسی</td><td>۴۱.۴۶</td></tr>
+      <tr><td>فیزیک</td><td>۳۹.۳۴</td></tr>
+      <tr><td>شیمی</td><td>۵۳.۶۷</td></tr>
+      <tr><td>ریاضی</td><td>۶۲.۱۹</td></tr>
+      <tr><td>زمین‌شناسی</td><td>۲۸.۳۳</td></tr>
+      <tr><th>تراز کل</th><th>۸۹۹۷</th></tr>
+    </table>
+    <p style="margin-top: 20px; font-size: 12px; color: gray">زمان چاپ کارنامه: ۱۴۰۴/۰۵/۱۳ - ۱۴:۵۷</p>
+  </div>
+
+  <script>
+    function login() {
+      const code = document.getElementById('code').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('error-msg');
+
+      if (code === '2220208087' && pass === 'AMIRALI2amirali2@') {
+        document.getElementById('login-box').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        errorMsg.innerText = '';
+      } else {
+        errorMsg.innerText = 'کد ملی یا رمز عبور اشتباه است.';
+      }
+    }
+
+    function showResult() {
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
